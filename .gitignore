@@ -16,11 +16,10 @@ Thumbs.db
 *.swo
 *.pyc
 *.pyo
-build
 node_modules
 _site
 .cache
-.build
+public
 .travis.yml
 tmp
 psd
