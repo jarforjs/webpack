@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import {render} from 'react-dom';
-import SortJs from './SortJs';
+import BubbleSort from './BubbleSort';
 
 
-render(<SortJs/>,document.getElementById('content'));
+render(<BubbleSort/>,document.getElementById('content'));
