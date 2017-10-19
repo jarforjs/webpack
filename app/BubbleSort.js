@@ -42,7 +42,13 @@ class BubbleSort extends Component{
                     arr[j]=arr[j+1];
                     arr[j+1]=temp;
                     step++;
+                    flag = true;
                 }
+            }
+            if(flag){
+                flag = false;
+            }else{
+                break;
             }
         }
     }
