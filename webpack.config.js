@@ -13,12 +13,15 @@ module.exports = {
     //cheap-module-eval-source-map方法构建速度更快，但是不利于调试，推荐在大型项目考虑时间成本时使用。
     devtool: "eval-source-map",
     //app下的main.js是唯一入口文件
-    entry: __dirname + "/app/main.js",
+    entry: {
+        //main:__dirname + "/app/main.js",
+        sort:__dirname + "/app/sort.js"
+    },
     output: {
         //打包后文件存放地方
         path: __dirname + "/public",
         //打包后输出文件的文件名
-        filename: "bundle.js"
+        filename: "[name].bundle.js"
     },
     module: {
         loaders: [
@@ -44,10 +47,10 @@ module.exports = {
                         loader: "style-loader"
                     },{
                         loader: "css-loader",
-                        options: {
-                            //最近有一个叫做 CSS modules 的技术就意在把JS的模块化思想带入CSS中来，通过CSS模块，所有的类名，动画名默认都只作用于当前模块。Webpack从一开始就对CSS模块化提供了支持，在CSS loader中进行配置后，你所需要做的一切就是把”modules“传递到所需要的地方，然后就可以直接把CSS的类名传递到组件的代码中，且这样做只对当前组件有效，不必担心在不同的模块中使用相同的类名造成冲突。
-                            modules:true
-                        }
+                        // options: {
+                        //     //最近有一个叫做 CSS modules 的技术就意在把JS的模块化思想带入CSS中来，通过CSS模块，所有的类名，动画名默认都只作用于当前模块。Webpack从一开始就对CSS模块化提供了支持，在CSS loader中进行配置后，你所需要做的一切就是把”modules“传递到所需要的地方，然后就可以直接把CSS的类名传递到组件的代码中，且这样做只对当前组件有效，不必担心在不同的模块中使用相同的类名造成冲突。
+                        //     modules:true
+                        // }
                     },{
                         //常用的CSS 处理loaders:
                         // Less Loader
@@ -56,6 +59,17 @@ module.exports = {
                         loader: "postcss-loader"
                     }
                 ]
+            },
+            {
+                test:require.resolve('jquery'),
+                // use: [{
+                //     loader: 'expose-loader',
+                //     options: 'jQuery'
+                // },{
+                //     loader: 'expose-loader',
+                //     options: '$'
+                // }]
+                loader:'expose-loader?jQuery!expose-loader?$'
             }
         ]
     },

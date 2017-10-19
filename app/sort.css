@@ -1,10 +1,5 @@
-/*! 版权所有，翻版必究 */
-/*! 版权所有，翻版必究 */
 *{
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    user-select: none;
 }
 #content {
     height: 300px;
